@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24"
+    height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>.a,.c{fill:#ff575a;}.a{stroke:#707070;}.b{clip-path:url(#a);}</style>
+        <clipPath id="a">
+            <rect class="a" width="24" height="24" transform="translate(315.164 757)" />
+        </clipPath>
+    </defs>
+    <g class="b" transform="translate(-315.164 -757)">
+        <g transform="translate(315 757.831)">
+            <g transform="translate(0 0)">
+                <path class="c"
+                    d="M23.759,11.132,20.1,7.47V3.239a1.385,1.385,0,0,0-2.77,0V4.7L14.6,1.973a3.644,3.644,0,0,0-5.037,0L.405,11.132a1.385,1.385,0,0,0,1.96,1.959l9.156-9.157a.818.818,0,0,1,1.121,0L21.8,13.091a1.385,1.385,0,1,0,1.959-1.959Z"
+                    transform="translate(0 -0.963)" />
+                <path class="c"
+                    d="M13.095,7.42a.68.68,0,0,0-.962,0L4.078,15.472a.682.682,0,0,0-.2.482v5.873a2.5,2.5,0,0,0,2.5,2.5h3.988V18.146h4.5v6.176h3.988a2.5,2.5,0,0,0,2.5-2.5V15.954a.679.679,0,0,0-.2-.482Z"
+                    transform="translate(-0.531 -1.821)" />
+            </g>
+        </g>
+    </g>
+</svg>
