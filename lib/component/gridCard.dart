@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/view/screens/homeSubScreens/resClininScreen.dart';
-import 'package:grad_pro/view/screens/homeSubScreens/serviceOrSurgery.dart';
+import 'package:HealthTracker/view/screens/homeSubScreens/resClininScreen.dart';
+import 'package:HealthTracker/view/screens/homeSubScreens/serviceOrSurgery.dart';
 
 import '../constant.dart';
 import 'customText.dart';

@@ -1,7 +1,10 @@
+import 'package:HealthTracker/view/screens/homeSubScreens/consultation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_pro/component/customText.dart';
-import 'package:grad_pro/constant.dart';
+import 'package:HealthTracker/component/customText.dart';
+import 'package:HealthTracker/constant.dart';
+import 'package:HealthTracker/component/DoctorInfo.dart';
 
 import 'patient_messages.dart';
 import 'tracking.dart';
@@ -23,12 +26,16 @@ class _TrackingPageState extends State<TrackingPage> {
     return Scaffold(
       backgroundColor: bg,
       appBar: AppBar(
-        title: Text(
-          "متابعة",
-          style: TextStyle(color: Colors.black),
+        title: Container(
+          alignment: Alignment.centerRight,
+          child: CustomText(
+              direction: TextDirection.rtl,
+              align: TextAlign.right,
+              text: "متابعة و استشارة",
+              color: black,
+              size: 24,
+              weight: FontWeight.normal),
         ),
-        backgroundColor: white,
-        elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.notifications,
@@ -37,20 +44,24 @@ class _TrackingPageState extends State<TrackingPage> {
           ),
           onPressed: () {},
         ),
-        automaticallyImplyLeading: false,
         actions: [
           IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.black,
-              )),
+            icon: Icon(Icons.arrow_forward_ios, color: black),
+            onPressed: () {
+              Navigator.of(context).pop(
+                  CupertinoPageRoute(builder: (BuildContext context) {
+                    return DoctorInfoScreen();
+                  }));
+            },
+          ),
           SizedBox(
-            width: MediaQuery.of(context).size.width / 10,
+            width: 15,
           ),
         ],
+        elevation: 5,
+        shadowColor: disabled,
+        backgroundColor: white,
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
@@ -124,7 +135,7 @@ class _TrackingPageState extends State<TrackingPage> {
             child: PageView(
               controller: pageController,
               children: [
-                PatientMsg(),
+               Consultation(),
                 Tracking(),
               ],
               onPageChanged: (_index) {

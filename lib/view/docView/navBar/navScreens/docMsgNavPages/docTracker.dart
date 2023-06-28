@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/component/customText.dart';
-import 'package:grad_pro/constant.dart';
-import 'package:grad_pro/view/docView/navBar/navScreens/docMsgNavPages/trackingByDr.dart';
+import 'package:HealthTracker/component/customText.dart';
+import 'package:HealthTracker/constant.dart';
+import 'package:HealthTracker/view/docView/navBar/navScreens/docMsgNavPages/trackingByDr.dart';
 
-import 'biometricPage.dart';
 
 class DocTracker extends StatefulWidget {
   const DocTracker({Key? key}) : super(key: key);

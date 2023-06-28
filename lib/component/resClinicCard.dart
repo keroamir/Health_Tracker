@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/view/screens/homeSubScreens/resClinicDetails.dart';
+import 'package:HealthTracker/view/screens/homeSubScreens/resClinicDetails.dart';
 
 import '../constant.dart';
 import 'customText.dart';

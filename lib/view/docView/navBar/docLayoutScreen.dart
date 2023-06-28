@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_pro/view/docView/navBar/navScreens/docHomeScreen.dart';
-import 'package:grad_pro/view/docView/navBar/navScreens/docProfileScreen.dart';
-import 'package:grad_pro/view/docView/navBar/navScreens/docMsgScreen.dart';
+import 'package:HealthTracker/view/docView/navBar/navScreens/docHomeScreen.dart';
+import 'package:HealthTracker/view/docView/navBar/navScreens/docProfileScreen.dart';
+import 'package:HealthTracker/view/docView/navBar/navScreens/docMsgScreen.dart';
 
 import '../../../constant.dart';
 

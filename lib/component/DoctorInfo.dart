@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_pro/component/customText.dart';
-import 'package:grad_pro/constant.dart';
+import 'package:HealthTracker/component/customText.dart';
+import 'package:HealthTracker/constant.dart';
+import 'package:HealthTracker/view/screens/homeSubScreens/tracking.dart';
+import 'package:HealthTracker/view/screens/navBar/layoutScreen.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import '../../../../homeSubScreens/tracking_page_layput.dart';
+import '../view/screens/homeSubScreens/resClinicDetails.dart';
+import '../view/screens/homeSubScreens/tracking_page_layput.dart';
 
 class DoctorInfoScreen extends StatefulWidget {
   const DoctorInfoScreen({Key? key}) : super(key: key);
@@ -14,33 +18,52 @@ class DoctorInfoScreen extends StatefulWidget {
 }
 
 class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
+
+
+
+
+
   final int? numOfVisitors = 5;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: white,
+        title: Container(
+          alignment: Alignment.centerRight,
+          child: CustomText(
+              direction: TextDirection.rtl,
+              align: TextAlign.right,
+              text: "بيانات الطبيب",
+              color: black,
+              size: 24,
+              weight: FontWeight.normal),
+        ),
         actions: [
-          CustomText(
-              text: "بيانات الطبيب", color: black, size: 33, weight: null),
           IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_forward_ios,
-                color: black,
-              )),
+            icon: Icon(Icons.arrow_forward_ios, color: black),
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                  CupertinoPageRoute(builder: (BuildContext context) {
+                    return LayoutScreen();
+                  }), (Route<dynamic> route) => false);
+            },
+          ),
+          SizedBox(
+            width: 15,
+          ),
         ],
+        elevation: 5,
+        shadowColor: disabled,
+        backgroundColor: white,
+        automaticallyImplyLeading: false,
       ),
       backgroundColor: bg,
       body: ListView(
         children: [
           Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Stack(
@@ -48,7 +71,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                 children: [
                   Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 22,
                       ),
                       // first card
@@ -69,7 +92,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                         // left icons
                                         Row(
                                           children: [
-                                            Icon(Icons.share),
+                                            const Icon(Icons.share),
                                             SizedBox(
                                               width: MediaQuery.of(context)
                                                   .size
@@ -84,14 +107,14 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                           width: MediaQuery.of(context)
                                               .size
                                               .width /
-                                              1.9,
+                                              2,
                                         ),
                                         // right icons
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 "assets/icons/Star_icon.svg"),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 5,
                                             ),
                                             CustomText(
@@ -111,13 +134,13 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 15),
+                              const SizedBox(height: 15),
                               CustomText(
                                   text: "بيتر عوني حبيب",
                                   color: black,
                                   size: 30,
                                   weight: null),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               // انف و اذن
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +150,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                       color: black,
                                       size: 20,
                                       weight: null),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   SvgPicture.asset(
@@ -144,14 +167,14 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                     size: 15,
                                     weight: null),
                               ),
-                              Divider(
+                              const Divider(
                                 color: Colors.black38,
                                 height: 6,
                                 thickness: 1,
                                 endIndent: 100,
                                 indent: 100,
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -162,7 +185,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                     weight: FontWeight.bold,
                                     direction: TextDirection.rtl,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   CustomText(
@@ -170,7 +193,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                       color: black,
                                       size: 20,
                                       weight: null),
-                                  SizedBox(width: 5),
+                                  const SizedBox(width: 5),
                                   SvgPicture.asset(
                                       "assets/icons/offer_icon.svg"),
                                 ],
@@ -205,7 +228,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                         weight: FontWeight.normal,
                                         direction: TextDirection.rtl,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       SvgPicture.asset(
@@ -214,9 +237,9 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Image.asset(""),
-                              Text("Location"),
+                              const Text("Location"),
                             ],
                           ),
                         ),
@@ -231,71 +254,77 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        // left icons
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                                "assets/icons/Star_icon.svg"),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            CustomText(
-                                                text: "5/",
-                                                color: subText,
-                                                size: 18,
-                                                weight: FontWeight.normal),
-                                            CustomText(
-                                                text: "4.5",
-                                                color: active,
-                                                size: 22,
-                                                weight: FontWeight.bold),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                              .size
-                                              .width /
-                                              5.2,
-                                        ),
-                                        // right part of row
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          // left icons
+                                          Row(
                                             children: [
-                                              CustomText(
-                                                  text:
-                                                  "(من $numOfVisitors زائر )",
-                                                  color: black,
-                                                  size: 20,
-                                                  weight: null),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              CustomText(
-                                                  text: "التقييمات",
-                                                  color: black,
-                                                  size: 20,
-                                                  weight: null),
-                                              SizedBox(
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                    30,
-                                              ),
                                               SvgPicture.asset(
                                                   "assets/icons/Star_icon.svg"),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              CustomText(
+                                                  text: "5/",
+                                                  color: subText,
+                                                  size: 18,
+                                                  weight: FontWeight.normal),
+                                              CustomText(
+                                                  text: "4.5",
+                                                  color: active,
+                                                  size: 22,
+                                                  weight: FontWeight.bold),
                                             ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width /6
+
+                                          ),
+                                          // right part of row
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                children: [
+                                                  CustomText(
+                                                      text:
+                                                      "(من $numOfVisitors زائر )",
+                                                      color: black,
+                                                      size: 20,
+                                                      weight: null),
+                                                  const SizedBox(
+                                                    width: 8,
+                                                  ),
+                                                  CustomText(
+                                                      text: "التقييمات",
+                                                      color: black,
+                                                      size: 20,
+                                                      weight: null),
+                                                  SizedBox(
+                                                    width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                        30,
+                                                  ),
+                                                  SvgPicture.asset(
+                                                      "assets/icons/Star_icon.svg"),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               SingleChildScrollView(
@@ -329,7 +358,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                         "assets/icons/Star_icon.svg"),
                                                     SvgPicture.asset(
                                                         "assets/icons/Star_icon.svg"),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 25,
                                                     ),
                                                     CustomText(
@@ -341,7 +370,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             CustomText(
@@ -350,7 +379,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                 color: black,
                                                 size: 25,
                                                 weight: FontWeight.bold),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             CustomText(
@@ -361,7 +390,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                       SizedBox(
                                         width: 10,
                                       ),
                                       Card(
@@ -388,7 +417,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                         "assets/icons/Star_icon.svg"),
                                                     SvgPicture.asset(
                                                         "assets/icons/Star_icon.svg"),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 25,
                                                     ),
                                                     CustomText(
@@ -400,7 +429,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             CustomText(
@@ -409,7 +438,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                 color: black,
                                                 size: 25,
                                                 weight: FontWeight.bold),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             CustomText(
@@ -420,7 +449,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       Card(
@@ -447,7 +476,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                         "assets/icons/Star_icon.svg"),
                                                     SvgPicture.asset(
                                                         "assets/icons/Star_icon.svg"),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 25,
                                                     ),
                                                     CustomText(
@@ -459,7 +488,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             CustomText(
@@ -468,7 +497,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                 color: black,
                                                 size: 25,
                                                 weight: FontWeight.bold),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             CustomText(
@@ -495,26 +524,28 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
               ),
             ],
           ),
-          SizedBox(height: 30,),
+          const SizedBox(height: 20,),
           Container(
             color: Colors.red,
             child: TextButton(
 
               onPressed: () {
-                Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
-                  return TrackingPage(1);
-                }));
+                  Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
+                    return TrackingPage(1);
+                  }));
+
               },
               child: CustomText(
                   text: "احجز موعد",
                   color: white,
                   size: 33,
-                  weight: null
+                  weight: FontWeight.w500
               ),
             ),
           ),
         ],
       ),
+
     );
   }
 }

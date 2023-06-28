@@ -1,9 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/component/buttons.dart';
-import 'package:grad_pro/view/docView/navBar/docLayoutScreen.dart';
-import 'package:grad_pro/view/splashScreen.dart';
+import 'package:HealthTracker/view/splashScreen.dart';
 
-void main() {
+Future<void> main() async {
+
   runApp(const MyApp());
 }
 
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: 'Care',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

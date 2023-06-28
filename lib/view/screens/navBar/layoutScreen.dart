@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_pro/constant.dart';
-import 'package:grad_pro/view/screens/navBar/navScreens/MoreScreen/moreScreen.dart';
-import 'package:grad_pro/view/screens/navBar/navScreens/ResScreen/resScreen.dart';
-import 'package:grad_pro/view/screens/navBar/navScreens/searchScreen.dart';
+import 'package:HealthTracker/constant.dart';
+import 'package:HealthTracker/view/screens/navBar/navScreens/MoreScreen/moreScreen.dart';
+import 'package:HealthTracker/view/screens/navBar/navScreens/ResScreen/resScreen.dart';
+import 'package:HealthTracker/view/screens/navBar/navScreens/searchScreen.dart';
 
 import 'navScreens/homeScreen.dart';
 
@@ -19,7 +19,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   List screens = [
     MoreScreen(),
-    ResScreen(),
+    ResScreen(0),
     SearchScreen(),
     HomeScreen(),
   ];

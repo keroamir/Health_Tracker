@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grad_pro/component/docInfoCard.dart';
-import 'package:grad_pro/component/searchBar.dart';
+import 'package:HealthTracker/component/docInfoCard.dart';
+import 'package:HealthTracker/component/searchBar.dart';
 
 import '../../../../constant.dart';
 

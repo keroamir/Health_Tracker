@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grad_pro/constant.dart';
+import 'package:HealthTracker/constant.dart';
 
 class TwoOptionButton extends StatefulWidget {
   const TwoOptionButton({Key? key}) : super(key: key);

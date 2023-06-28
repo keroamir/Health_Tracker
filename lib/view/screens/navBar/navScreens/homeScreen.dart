@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/component/customText.dart';
-import 'package:grad_pro/component/gridCard.dart';
-import 'package:grad_pro/view/screens/homeSubScreens/resClininScreen.dart';
+import 'package:HealthTracker/component/customText.dart';
+import 'package:HealthTracker/component/gridCard.dart';
+import 'package:HealthTracker/view/screens/homeSubScreens/resClininScreen.dart';
 
 import '../../../../constant.dart';
 

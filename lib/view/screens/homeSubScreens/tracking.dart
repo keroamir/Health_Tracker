@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_pro/controller/trackController.dart';
+import 'package:HealthTracker/controller/trackController.dart';
 
 import '../../../component/customText.dart';
 import '../../../constant.dart';

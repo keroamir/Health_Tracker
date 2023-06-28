@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+import '../../../../../constant.dart';
 
 class DocMsgs extends StatefulWidget {
   @override
@@ -24,8 +24,28 @@ class _DocMsgsState extends State<DocMsgs> {
       child: ListView.builder(
         itemCount: messages.length,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(messages[index]),
+          return Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+            margin: EdgeInsets.all(8),
+            child: ListTile(
+              leading: Container(
+                padding: EdgeInsets.all(10),
+                  decoration:
+                      BoxDecoration(shape: BoxShape.circle, color: devider),
+                  child: Icon(
+                    Icons.person,
+                    color: active,
+                  )),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              title: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: devider, borderRadius: BorderRadius.circular(30)),
+                  child: Text(messages[index])),
+            ),
           );
         },
       ),
@@ -59,7 +79,7 @@ class _DocMsgsState extends State<DocMsgs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: bg,
       body: Column(
         children: [
           _buildChatList(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grad_pro/view/screens/navBar/layoutScreen.dart';
+import 'package:HealthTracker/view/screens/navBar/layoutScreen.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 
 class SplashScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/view/docView/navBar/navScreens/docMsgNavPages/docMsgs.dart';
-import 'package:grad_pro/view/docView/navBar/navScreens/docMsgNavPages/docTracker.dart';
+import 'package:HealthTracker/view/docView/navBar/navScreens/docMsgNavPages/docMsgs.dart';
+import 'package:HealthTracker/view/docView/navBar/navScreens/docMsgNavPages/docTracker.dart';
 
 import '../../../../constant.dart';
 

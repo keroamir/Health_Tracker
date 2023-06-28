@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/component/customText.dart';
-import 'package:grad_pro/component/resClinicCard.dart';
-import 'package:grad_pro/view/screens/navBar/layoutScreen.dart';
+import 'package:HealthTracker/component/customText.dart';
+import 'package:HealthTracker/component/resClinicCard.dart';
+import 'package:HealthTracker/view/screens/navBar/layoutScreen.dart';
 
 import '../../../constant.dart';
 

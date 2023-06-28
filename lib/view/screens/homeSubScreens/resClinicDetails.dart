@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_pro/component/docInfoCard.dart';
-import 'package:grad_pro/component/searchBar.dart';
-import 'package:grad_pro/view/screens/homeSubScreens/resClininScreen.dart';
+import 'package:HealthTracker/component/docInfoCard.dart';
+import 'package:HealthTracker/component/searchBar.dart';
+import 'package:HealthTracker/view/screens/homeSubScreens/resClininScreen.dart';
 
 import '../../../component/customText.dart';
 import '../../../constant.dart';
-import '../navBar/navScreens/ResScreen/Content_sub_pages/DoctorInfo.dart';
+import '../../../component/DoctorInfo.dart';
 
 class ResClinicDetails extends StatefulWidget {
   String? name;
