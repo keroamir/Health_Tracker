@@ -71,15 +71,25 @@ class _DocLayoutScreenState extends State<DocLayoutScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               label: 'الصفحة الشخصية',
-              icon: SvgPicture.asset("assets/icons/docProfile.svg",height: MediaQuery.of(context).size.height/20,),
-              activeIcon: SvgPicture.asset("assets/icons/docProfileActive.svg",height: MediaQuery.of(context).size.height/20,)),
-          BottomNavigationBarItem(
-              label: 'رسائل',
               icon: SvgPicture.asset(
-                "assets/icons/docMsg.svg",
+                "assets/icons/docProfile.svg",
                 height: MediaQuery.of(context).size.height / 20,
               ),
-              activeIcon: SvgPicture.asset("assets/icons/docMsgActive.svg",height: MediaQuery.of(context).size.height/20,)),
+              activeIcon: SvgPicture.asset(
+                "assets/icons/docProfileActive.svg",
+                height: MediaQuery.of(context).size.height / 20,
+              )),
+          BottomNavigationBarItem(
+            label: 'متابعة',
+            icon: Icon(
+              Icons.spatial_tracking,
+              color: black,
+            ),
+            activeIcon: Icon(
+              Icons.spatial_tracking,
+              color: active,
+            ),
+          ),
           BottomNavigationBarItem(
               label: 'الرئيسية',
               icon: SvgPicture.asset(

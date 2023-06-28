@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:HealthTracker/component/customText.dart';
 import 'package:HealthTracker/constant.dart';
-import 'package:HealthTracker/view/docView/navBar/navScreens/docMsgNavPages/trackingByDr.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../../controller/trackController.dart';
+import '../../../../../model/trackModel.dart';
 
 
 class DocTracker extends StatefulWidget {
@@ -13,56 +16,267 @@ class DocTracker extends StatefulWidget {
 }
 
 class _DocTrackerState extends State<DocTracker> {
+  TrackController _trackController = TrackController();
+  Future<TrackModel?> _trackDataFuture = Future.value(null);
+
+
+  @override
+  void initState() {
+    super.initState();
+    _trackDataFuture = _trackController.getSingleRowDB(11);
+
+  }
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: bg,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
-                      return TrackingByDr();
-                    }));
-                  },
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex : 2,
-                          child: ListTile(
-                              title: CustomText(text: "الاسم : كيرلس امير", color: black, size: 20, weight: FontWeight.w600, direction: TextDirection.rtl,),
-                              subtitle: CustomText(text: 'السن : 23', color: black , size: 16, weight: FontWeight.w500,direction: TextDirection.rtl,),
+    return  Scaffold(
+
+      body: SingleChildScrollView(
+          child: FutureBuilder<TrackModel?>(
+            future: _trackDataFuture,
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              TrackModel? trackData = snapshot.data;
+              return Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 22,
+                          ),
+                          // first card
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Card(
+                              color: white,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            // left icons
+                                            Row(
+                                              children: [
+                                                IconButton(
+                                                    icon: Icon(Icons.call),
+                                                    onPressed: () {
+
+                                                    }
+                                                ),
+                                                SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                      20,
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width /
+                                                  1.9,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15),
+                                  CustomText(
+                                      text: "بيتر عوني حبيب",
+                                      color: black,
+                                      size: 30,
+                                      weight: null),
+                                  SizedBox(height: 10),
+                                  // انف و اذن
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CustomText(
+                                          text: "انف و اذن",
+                                          color: black,
+                                          size: 20,
+                                          weight: null),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      SvgPicture.asset("assets/icons/noseandear.svg"),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: CustomText(
+                                        align: TextAlign.center,
+                                        text:
+                                        "بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب ",
+                                        color: Colors.black26,
+                                        size: 15,
+                                        weight: null),
+                                  ),
+                                ],
+                              ),
                             ),
+                          ),
 
+                        ],
+                      ),
+                      // the stack image
+                      Image.asset("assets/images/dr_pic.png"),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    //  third card
+                    child: Column(
+                      children: [
+                        // ضغط الدم
+                        CustomText(
+                            text: "ضغط الدم",
+                            color: black,
+                            size: 33,
+                            weight: FontWeight.bold),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          height: MediaQuery.of(context).size.height / 4,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Text(
+                              trackData?.blood_pressure ?? "",
+                              style: TextStyle(
+                                fontSize: 40,
+                              ),
+                            ),
+                          ),
                         ),
+                        // السكر
+                        CustomText(
+                            align: TextAlign.right,
+                            direction: TextDirection.rtl,
+                            text: "السكر",
+                            color: black,
+                            size: 33,
+                            weight: FontWeight.bold),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          height: MediaQuery.of(context).size.height / 4,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Text(
+                              trackData?.suger ?? "",
+                              style: TextStyle(
+                                fontSize: 40,
+                              ),
+                            ),
+                          ),
+                        ),
+                        // الحرارة
+                        CustomText(
+                            text: "الحرارة",
+                            color: black,
+                            size: 33,
+                            weight: FontWeight.bold),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          height: MediaQuery.of(context).size.height / 4,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  trackData?.temp ?? "",
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                  ),
+                                ),
+                                Text(
+                                  " Normal is : 37 ",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        // ضربات القلب
+                        CustomText(
+                            text: "ضربات القلب",
+                            color: black,
+                            size: 33,
+                            weight: FontWeight.bold),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          height: MediaQuery.of(context).size.height / 4,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
 
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8.0, top: 8, bottom: 8,left: 12),
-                            child: Image(
-                              image: NetworkImage("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v937-aew-139.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=df5cf03ba78dce75d913bb39d9e75a93"),
-                              height: MediaQuery.of(context).size.height / 8,
-                              width: MediaQuery.of(context).size.width / 4,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  trackData?.heart_beat ?? "",
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                  ),
+                                ),
+                                Text(
+                                  " Normal is  ",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                Text(
+                                  "72 BPM",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-              )
-            ],
-          ),
-        ));
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    color: Colors.red,
+                    child: TextButton(
+                      onPressed: () {
+
+                      },
+                      child: CustomText(
+                          text: "اكتب تعليق", color: white, size: 33, weight: null),
+                    ),
+                  ),
+                ],
+              );
+            },
+          )),
+      backgroundColor: bg,
+    );
   }
 }
