@@ -1,12 +1,10 @@
 import 'package:HealthTracker/view/screens/homeSubScreens/consultation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:HealthTracker/component/customText.dart';
 import 'package:HealthTracker/constant.dart';
 import 'package:HealthTracker/component/DoctorInfo.dart';
 
-import 'patient_messages.dart';
 import 'tracking.dart';
 
 class TrackingPage extends StatefulWidget {
@@ -48,7 +46,7 @@ class _TrackingPageState extends State<TrackingPage> {
           IconButton(
             icon: Icon(Icons.arrow_forward_ios, color: black),
             onPressed: () {
-              Navigator.of(context).pop(
+              Navigator.of(context).push(
                   CupertinoPageRoute(builder: (BuildContext context) {
                     return DoctorInfoScreen();
                   }));

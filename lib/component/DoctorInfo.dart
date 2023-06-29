@@ -1,14 +1,11 @@
+import 'package:HealthTracker/view/screens/homeSubScreens/reservation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:HealthTracker/component/customText.dart';
 import 'package:HealthTracker/constant.dart';
-import 'package:HealthTracker/view/screens/homeSubScreens/tracking.dart';
 import 'package:HealthTracker/view/screens/navBar/layoutScreen.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import '../view/screens/homeSubScreens/resClinicDetails.dart';
-import '../view/screens/homeSubScreens/tracking_page_layput.dart';
 
 class DoctorInfoScreen extends StatefulWidget {
   const DoctorInfoScreen({Key? key}) : super(key: key);
@@ -531,7 +528,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
 
               onPressed: () {
                   Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
-                    return TrackingPage(1);
+                    return Reservation();
                   }));
 
               },
