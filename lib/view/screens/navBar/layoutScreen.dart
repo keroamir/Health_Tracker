@@ -5,7 +5,7 @@ import 'package:HealthTracker/view/screens/navBar/navScreens/MoreScreen/moreScre
 import 'package:HealthTracker/view/screens/navBar/navScreens/ResScreen/resScreen.dart';
 import 'package:HealthTracker/view/screens/navBar/navScreens/searchScreen.dart';
 
-import 'navScreens/homeScreen.dart';
+import 'navScreens/homeScreens/homeScreen.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({Key? key}) : super(key: key);

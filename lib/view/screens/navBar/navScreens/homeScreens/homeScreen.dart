@@ -5,7 +5,7 @@ import 'package:HealthTracker/component/customText.dart';
 import 'package:HealthTracker/component/gridCard.dart';
 import 'package:HealthTracker/view/screens/homeSubScreens/resClininScreen.dart';
 
-import '../../../../constant.dart';
+import '../../../../../constant.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 weight: FontWeight.normal,
                                 direction: TextDirection.rtl,
                               ),
-                              subtitle: Container(
+                              subtitle: SizedBox(
                                 width:
                                     MediaQuery.of(context).size.width * 2 / 3,
                                 child: CustomText(
@@ -125,29 +125,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    Positioned(
+                   const Positioned(
+                      left: 5,
+                      bottom: 5,
                       child: Image(
                         image: AssetImage("assets/images/doctor.png"),
                         fit: BoxFit.fitHeight,
                       ),
-                      left: 5,
-                      bottom: 5,
                     ),
                   ],
                 ),
-                GridView.extent(
-                  maxCrossAxisExtent: 200,
+                GridView.count(
+                  primary: false,
+                  scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  padding: EdgeInsets.symmetric(horizontal: 28),
-                  crossAxisSpacing: 0,
-                  mainAxisSpacing: 0,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 10,
+                  crossAxisCount: 2,
                   children: [
                     GridCard(
                         text: "خدمة أو عملية", image: "assets/images/22.png"),
                     GridCard(
-                        text: "حجز اونلاين", image: "assets/images/11.png"),
+                        text: "مستشفي", image: "assets/images/11.png"),
                     GridCard(
-                        text: "استشاري اجنبي", image: "assets/images/44.png"),
+                        text: "صيدلية", image: "assets/images/44.png"),
                     GridCard(
                         text: "زيارة منزلية", image: "assets/images/33.png"),
                   ],

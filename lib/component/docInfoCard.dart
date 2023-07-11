@@ -41,7 +41,7 @@ class DocInfoCard extends StatelessWidget {
                 Row(
                   children: [
                     SvgPicture.asset("assets/icons/Mask Group 128.svg"),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     CustomText(
@@ -68,7 +68,7 @@ class DocInfoCard extends StatelessWidget {
             Expanded(
               child: ListTile(
                 title: CustomText(
-                  text: "$name",
+                  text: name,
                   color: black,
                   size: 20,
                   weight: FontWeight.normal,
@@ -85,11 +85,11 @@ class DocInfoCard extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset("assets/icons/Mask Group 127.svg"),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             CustomText(
-                              text: "$pro",
+                              text: pro,
                               color: black,
                               size: 18,
                               weight: FontWeight.normal,
@@ -99,11 +99,11 @@ class DocInfoCard extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset("assets/icons/Mask Group 126.svg"),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             CustomText(
-                              text: "$location",
+                              text: location,
                               color: black,
                               size: 18,
                               weight: FontWeight.normal,
@@ -114,7 +114,7 @@ class DocInfoCard extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset("assets/icons/Mask Group 135.svg"),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             CustomText(
@@ -133,9 +133,9 @@ class DocInfoCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 5, right: 12),
+              padding: const EdgeInsets.only(left: 5, right: 12),
               child: Image(
-                image: AssetImage("$image"),
+                image: AssetImage(image),
               ),
             ),
           ],

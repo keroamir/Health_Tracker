@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "251882240021",
+    "firebase_url": "https://healthtracker-156e3-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "healthtracker-156e3",
+    "storage_bucket": "healthtracker-156e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251882240021:android:be193d93f54472f582361c",
+        "android_client_info": {
+          "package_name": "com.example.grad_pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251882240021-d6th181o3s148mv4i6qgd1jp4hc90dhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIBWlFHvbhZdwKTjvx2ksRVl3e5HYRPEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251882240021-d6th181o3s148mv4i6qgd1jp4hc90dhn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

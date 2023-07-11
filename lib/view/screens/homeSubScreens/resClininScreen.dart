@@ -6,11 +6,12 @@ import 'package:HealthTracker/view/screens/navBar/layoutScreen.dart';
 
 import '../../../constant.dart';
 
+// ignore: must_be_immutable
 class ResClinicScreen extends StatefulWidget {
   String? title;
 
 
-  ResClinicScreen({this.title});
+  ResClinicScreen({super.key, this.title});
 
   @override
   State<ResClinicScreen> createState() => _ResClinicScreenState();
@@ -20,6 +21,7 @@ class _ResClinicScreenState extends State<ResClinicScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bg,
       appBar: AppBar(
         title: Container(
           alignment: Alignment.centerRight,
@@ -33,15 +35,15 @@ class _ResClinicScreenState extends State<ResClinicScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.arrow_forward_ios, color: black),
+            icon: const Icon(Icons.arrow_forward_ios, color: black),
             onPressed: () {
               Navigator.of(context).pushAndRemoveUntil(
                   CupertinoPageRoute(builder: (BuildContext context) {
-                return LayoutScreen();
+                return const LayoutScreen();
               }), (Route<dynamic> route) => false);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
         ],
@@ -75,7 +77,7 @@ class _ResClinicScreenState extends State<ResClinicScreen> {
                   hintText: "بحث عن تخصص",
                   fillColor: white,
                   filled: true,
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 20,
                   ),
                   hintTextDirection: TextDirection.rtl,
@@ -88,7 +90,7 @@ class _ResClinicScreenState extends State<ResClinicScreen> {
                   ),
                   constraints: BoxConstraints(
                       maxWidth: MediaQuery.of(context).size.width),
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.search,
                     color: subText,
                   ),

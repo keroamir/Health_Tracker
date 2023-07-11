@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:HealthTracker/view/splashScreen.dart';
 
+
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
 
   runApp(const MyApp());
 }

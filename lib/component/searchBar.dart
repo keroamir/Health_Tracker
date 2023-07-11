@@ -22,10 +22,10 @@ class SearchBar extends StatelessWidget {
                     color: black,
                     size: 20,
                     weight: FontWeight.normal),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
-                Icon(
+                const Icon(
                   Icons.filter_alt_sharp,
                   color: black,
                   size: 30,
@@ -33,7 +33,7 @@ class SearchBar extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
           TextFormField(
@@ -48,12 +48,12 @@ class SearchBar extends StatelessWidget {
               hintText: "بحث عن طبيب",
               fillColor: white,
               filled: true,
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 fontSize: 20,
               ),
               hintTextDirection: TextDirection.rtl,
-              contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 12, vertical: 5),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
               border: OutlineInputBorder(
                 gapPadding: 3,
                 borderSide: BorderSide.none,
@@ -61,13 +61,13 @@ class SearchBar extends StatelessWidget {
               ),
               constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.width * 2 / 3),
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 Icons.search,
                 color: subText,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
         ],

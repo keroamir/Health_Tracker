@@ -89,7 +89,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                         // left icons
                                         Row(
                                           children: [
-                                            const Icon(Icons.share),
+                                            const Icon(Icons.share , color: active,),
                                             SizedBox(
                                               width: MediaQuery.of(context)
                                                   .size
@@ -97,7 +97,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                   20,
                                             ),
                                             SvgPicture.asset(
-                                                "assets/icons/heart_icon.svg"),
+                                                "assets/icons/heart_icon.svg", color: active),
                                           ],
                                         ),
                                         SizedBox(
@@ -110,7 +110,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                         Row(
                                           children: [
                                             SvgPicture.asset(
-                                                "assets/icons/Star_icon.svg"),
+                                                "assets/icons/Star_icon.svg", color: active),
                                             const SizedBox(
                                               width: 5,
                                             ),
@@ -151,7 +151,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                     width: 5,
                                   ),
                                   SvgPicture.asset(
-                                      "assets/icons/noseandear.svg"),
+                                      "assets/icons/noseandear.svg", color: active),
                                 ],
                               ),
                               Padding(
@@ -160,9 +160,9 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                     align: TextAlign.center,
                                     text:
                                     "بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب بيتر عوني حبيب ",
-                                    color: Colors.black26,
+                                    color: subText,
                                     size: 15,
-                                    weight: null),
+                                    weight: FontWeight.w500),
                               ),
                               const Divider(
                                 color: Colors.black38,
@@ -191,8 +191,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                       size: 20,
                                       weight: null),
                                   const SizedBox(width: 5),
-                                  SvgPicture.asset(
-                                      "assets/icons/offer_icon.svg"),
+                                  Icon(Icons.price_check,color: active)
                                 ],
                               ),
                             ],
@@ -229,13 +228,12 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                         width: 5,
                                       ),
                                       SvgPicture.asset(
-                                          "assets/icons/location_sign.svg"),
+                                          "assets/icons/location_sign.svg" ,color: active),
                                     ],
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 10),
-                              Image.asset(""),
                               const Text("Location"),
                             ],
                           ),
@@ -263,7 +261,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                           Row(
                                             children: [
                                               SvgPicture.asset(
-                                                  "assets/icons/Star_icon.svg"),
+                                                  "assets/icons/Star_icon.svg",color: active),
                                               const SizedBox(
                                                 width: 5,
                                               ),
@@ -313,7 +311,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                                                         30,
                                                   ),
                                                   SvgPicture.asset(
-                                                      "assets/icons/Star_icon.svg"),
+                                                      "assets/icons/Star_icon.svg",color: active),
                                                 ],
                                               ),
                                             ),
@@ -519,27 +517,29 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                   Image.asset("assets/images/dr_pic.png"),
                 ],
               ),
+              const SizedBox(height: 20,),
+              Container(
+                width: MediaQuery.of(context).size.width/2,
+                child: ElevatedButton(
+
+                  onPressed: () {
+                    Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
+                      return Reservation();
+                    }));
+
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(active),
+                  ),
+
+                  child: CustomText(text: 'احجز موعد', size: 20, color: white, weight: FontWeight.bold, direction: TextDirection.rtl,),
+
+
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 20,),
-          Container(
-            color: Colors.red,
-            child: TextButton(
 
-              onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
-                    return Reservation();
-                  }));
-
-              },
-              child: CustomText(
-                  text: "احجز موعد",
-                  color: white,
-                  size: 33,
-                  weight: FontWeight.w500
-              ),
-            ),
-          ),
         ],
       ),
 

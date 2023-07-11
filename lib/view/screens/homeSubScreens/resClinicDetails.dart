@@ -21,6 +21,7 @@ class _ResClinicDetailsState extends State<ResClinicDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bg,
       appBar: AppBar(
         title: Container(
           alignment: Alignment.centerRight,
@@ -62,7 +63,7 @@ class _ResClinicDetailsState extends State<ResClinicDetails> {
                     bottomRight: Radius.circular(20.0),
                   ),
                   color: bg),
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
                 child: SearchBar(),
               )),

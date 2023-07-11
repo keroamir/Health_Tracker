@@ -5,11 +5,12 @@ import 'package:HealthTracker/view/screens/homeSubScreens/resClinicDetails.dart'
 import '../constant.dart';
 import 'customText.dart';
 
+// ignore: must_be_immutable
 class ResClinicCrad extends StatelessWidget {
   String image;
   String? name;
 
-  ResClinicCrad({required this.image, required this.name});
+  ResClinicCrad({super.key, required this.image, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -34,25 +35,23 @@ class ResClinicCrad extends StatelessWidget {
         }));
       },
       child: Card(
-        elevation: 15,
+        elevation: 150,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: disabled,
-        child: SingleChildScrollView(
-          child: Column(
-            
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Image(image: AssetImage("$image")),
-              ),
-              CustomText(
-                text: "$name",
-                color: black,
-                size: 20,
-                weight: FontWeight.normal,
-                direction: TextDirection.rtl,
-              )
-            ],
-          ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Image(image: AssetImage(image)),
+            ),
+            CustomText(
+              text: "$name",
+              color: black,
+              size: 20,
+              weight: FontWeight.normal,
+              direction: TextDirection.rtl,
+            )
+          ],
         ),
       ),
     );

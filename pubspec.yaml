@@ -48,14 +48,17 @@ dependencies:
   permission_handler:
   intl:
   image_picker:
+  firebase_core:
+  firebase_database:
+  firebase: ^9.0.3
 
 
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path_android: "assets/logo/Asset 2@300x.png"
-  background_color_android: "#E6F4FF"
+  image_path: "assets/logo/Asset 2@300x.png"
+  background_color: "#e6f4ff"
   min_sdk_android: 21
 
 dev_dependencies:
