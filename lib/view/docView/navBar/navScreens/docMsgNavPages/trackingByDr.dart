@@ -6,7 +6,7 @@ import 'package:HealthTracker/view/docView/navBar/docLayoutScreen.dart';
 import '../../../../../component/customText.dart';
 import '../../../../../constant.dart';
 import '../../../../../controller/trackController.dart';
-import '../../../../../model/trackModel.dart';
+import '../../../../../model/userModel.dart';
 import 'docMsgs.dart';
 import 'docTracker.dart';
 

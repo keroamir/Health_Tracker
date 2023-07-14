@@ -1,3 +1,4 @@
+import 'package:HealthTracker/controller/homeApiController.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,41 +37,42 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CarouselSlider(
-                    items: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset("assets/images/1.png",
-                            fit: BoxFit.fill),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset("assets/images/2.png",
-                            fit: BoxFit.fill),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset("assets/images/3.png",
-                            fit: BoxFit.fill),
-                      ),
-                    ],
-                    options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height / 5,
-                      aspectRatio: 16 / 9,
-                      viewportFraction: 0.8,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 3),
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 300),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeCenterPage: true,
-                      enlargeFactor: 0.3,
-                      scrollDirection: Axis.horizontal,
-                    ),
-                  ),
+                  child: FutureBuilder(
+                    future: HomeApi().GetImages(),
+                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                      if(snapshot.hasData){
+                        return CarouselSlider.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (BuildContext context, int index, int realIndex) {
+                            return ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network("${snapshot.data[index].image}",
+                                  fit: BoxFit.fill),
+                            );
+                          },
+
+
+                          options: CarouselOptions(
+                            height: MediaQuery.of(context).size.height / 5,
+                            aspectRatio: 16 / 9,
+                            viewportFraction: 0.8,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            reverse: false,
+                            autoPlay: true,
+                            autoPlayInterval: const Duration(seconds: 3),
+                            autoPlayAnimationDuration:
+                            const Duration(milliseconds: 300),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: true,
+                            enlargeFactor: 0.3,
+                            scrollDirection: Axis.horizontal,
+                          ),
+                        );
+                      } else{
+                        return const Center(child: CircularProgressIndicator(),);
+                      }
+                    },),
                 ),
                 Stack(
                   children: [

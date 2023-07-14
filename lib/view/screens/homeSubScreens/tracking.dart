@@ -236,18 +236,7 @@ class _TrackingState extends State<Tracking> {
             color: Colors.red,
             child: TextButton(
               onPressed: () {
-                TrackController().insertdb({
-                  "heart_beat": heartBeatController.text.toString(),
-                  "blood_pressure": bloodPressureController.text.toString(),
-                  "suger": sugarController.text.toString(),
-                  "temp": tempController.text.toString(),
-                }).then((value) {
-                  print("value $value");
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return TrackingPage(0);
-                  }));
-                });
+
               },
               child: CustomText(
                   text: "اكتب استشارة", color: white, size: 33, weight: null),

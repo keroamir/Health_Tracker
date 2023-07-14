@@ -39,7 +39,6 @@ dependencies:
   flutter_svg:
   carousel_slider: ^4.2.1
   carousel_indicator: ^1.0.6
-  sqflite:
   path_provider:
   sliding_up_panel:
   flutter_launcher_icons:
@@ -51,6 +50,10 @@ dependencies:
   firebase_core:
   firebase_database:
   firebase: ^9.0.3
+  http:
+  url_launcher:
+  flutter_session_manager: ^1.0.3
+  shared_preferences:
 
 
 

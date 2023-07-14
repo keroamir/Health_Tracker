@@ -118,8 +118,8 @@ class _ReservationState extends State<Reservation> {
               SizedBox(height: 24.0),
               ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(active),
-                ),
+                backgroundColor: MaterialStateProperty.all<Color>(active),
+              ),
                 onPressed: () {
                   // Perform reservation logic
                   showDialog(
