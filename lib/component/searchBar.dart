@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../constant.dart';
 import 'customText.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({Key? key}) : super(key: key);
+class SearchBars extends StatelessWidget {
+  const SearchBars({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

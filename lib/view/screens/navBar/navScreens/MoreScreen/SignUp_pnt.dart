@@ -5,7 +5,7 @@ import 'package:HealthTracker/component/customText.dart';
 import 'package:HealthTracker/constant.dart';
 import 'package:HealthTracker/view/screens/navBar/layoutScreen.dart';
 import 'package:HealthTracker/view/screens/navBar/navScreens/MoreScreen/login_pnt.dart';
-
+import 'package:http/http.dart' as http;
 
 class SignUpPnt extends StatefulWidget {
   const SignUpPnt({Key? key}) : super(key: key);
@@ -15,6 +15,36 @@ class SignUpPnt extends StatefulWidget {
 }
 
 class _SignUpPntState extends State<SignUpPnt> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  Future<void> registerRequest() async {
+    var url = Uri.parse('http://healthtracker.frmawy.com/api/user/register');
+
+    var data = {
+      'name': '${nameController.text}',
+      'fcm_token': '11',
+      'email': '${emailController.text}',
+      'password': '${passwordController.text}',
+      'phone': '${phoneController.text}',
+    };
+
+    var response = await http.post(url, body: data);
+
+    if (response.statusCode == 200) {
+      Navigator.pushAndRemoveUntil(context,
+          CupertinoPageRoute(
+              builder: (BuildContext context) {
+                return LayoutScreen();
+              }), (route) => false);
+    } else {
+      print('Request failed with status: ${response.statusCode}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +101,7 @@ class _SignUpPntState extends State<SignUpPnt> {
                   child: Container(
                     color: bg,
                     child: TextFormField(
+                      controller: nameController,
                       cursorColor: active,
                       maxLines: 1,
                       decoration: InputDecoration(
@@ -136,6 +167,7 @@ class _SignUpPntState extends State<SignUpPnt> {
                   child: Container(
                     color: bg,
                     child: TextFormField(
+                      controller: phoneController,
                       cursorColor: active,
                       maxLines: 1,
                       decoration: InputDecoration(
@@ -147,27 +179,27 @@ class _SignUpPntState extends State<SignUpPnt> {
                         // ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors
                                 .grey, // Customize the enabled border color
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: active, // Customize the focused border color
                           ),
                         ),
                         suffixIcon: Icon(Icons.phone, color: active),
                         hintText: 'رقم موبايلك',
                         hintTextDirection: TextDirection.rtl,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.normal,
                             color: subText),
                       ),
                       textDirection: TextDirection.rtl,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.normal,
                         color: black,
@@ -190,6 +222,67 @@ class _SignUpPntState extends State<SignUpPnt> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: CustomText(
+                      text: "البريد الألكتروني",
+                      color: black,
+                      size: 22,
+                      weight: FontWeight.normal),
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: Container(
+                    color: bg,
+                    child: TextFormField(
+                      controller: emailController,
+                      cursorColor: active,
+                      maxLines: 1,
+                      decoration: InputDecoration(
+                        // border: OutlineInputBorder(
+                        //   borderRadius: BorderRadius.circular(20.0),
+                        //   borderSide: BorderSide(
+                        //     color: Colors.grey, // Customize the border color
+                        //   ),
+                        // ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(
+                            color: Colors
+                                .grey, // Customize the enabled border color
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(
+                            color: active, // Customize the focused border color
+                          ),
+                        ),
+                        suffixIcon: Icon(Icons.email, color: active),
+                        hintText: 'البريد الألكتروني',
+                        hintTextDirection: TextDirection.rtl,
+                        hintStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                            color: subText),
+                      ),
+                      textDirection: TextDirection.rtl,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                        color: black,
+                      ),
+                      // keyboardType: TextInputType.text,
+                      // // inputFormatters: [
+                      // //   FilteringTextInputFormatter.digitsOnly,
+                      // //   LengthLimitingTextInputFormatter(11),
+                      // //   // Limit input to 11 characters
+                      // // ],
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -208,6 +301,7 @@ class _SignUpPntState extends State<SignUpPnt> {
                   child: Container(
                     color: bg,
                     child: TextFormField(
+                      controller: passwordController,
                       cursorColor: active,
                       maxLines: 1,
                       decoration: InputDecoration(
@@ -269,6 +363,7 @@ class _SignUpPntState extends State<SignUpPnt> {
                   child: Container(
                     color: bg,
                     child: TextFormField(
+                      controller: confirmPasswordController,
                       cursorColor: active,
                       maxLines: 1,
                       decoration: InputDecoration(
@@ -323,11 +418,7 @@ class _SignUpPntState extends State<SignUpPnt> {
                       child: ElevatedButton(
                         onPressed: () {
                           // Button action goes here
-                          Navigator.pushAndRemoveUntil(context,
-                              CupertinoPageRoute(
-                                  builder: (BuildContext context) {
-                            return LayoutScreen();
-                          }), (route) => false);
+                          registerRequest();
                         },
                         style: ButtonStyle(
                             backgroundColor:

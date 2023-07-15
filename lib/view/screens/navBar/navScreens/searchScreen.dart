@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
-              child: SearchBar(),
+              child: SearchBars(),
             ),
             DocInfoCard(image: "assets/images/3485318.png", name: "محمود جمال الكومي", pro: "انف واذن", location: "الرياض / شارع الجامعة", price: "200 ريال", rating: "4.7", distance: "10 كم"),
             DocInfoCard(image: "assets/images/12346.png", name: "هشام إبراهيم التطاوي", pro: "انف واذن", location: "مكة / شارع الملك", price: "110 ريال", rating: "4.9", distance: "186 كم")

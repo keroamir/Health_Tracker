@@ -46,7 +46,7 @@ class _MoreScreenState extends State<MoreScreen> {
         child: FutureBuilder(
           future: UserController().fetchUserData(getAuthToken().toString()),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            print(snapshot.data.name);
+            // print(snapshot.data.name);
             if (snapshot.data != null) {
               return Column(
                 children: [
@@ -385,7 +385,7 @@ class _MoreScreenState extends State<MoreScreen> {
               return Text('Error: ${snapshot.error}');
             } else {
               // Show a loading indicator while waiting for the future to complete
-              return CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator(),);
             }
           },
         ),
