@@ -30,13 +30,8 @@ class _MoreScreenState extends State<MoreScreen> {
     }
   }
 
-  Future<String?> getAuthToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? authToken = prefs.getString('auth_token');
-    print(authToken);
-      return authToken;
 
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +39,7 @@ class _MoreScreenState extends State<MoreScreen> {
       backgroundColor: bg,
       body: SingleChildScrollView(
         child: FutureBuilder(
-          future: UserController().fetchUserData(getAuthToken().toString()),
+          future: UserController().fetchUserData(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             // print(snapshot.data.name);
             if (snapshot.data != null) {
@@ -62,13 +57,13 @@ class _MoreScreenState extends State<MoreScreen> {
                           child: ListTile(
                             title: CustomText(
                                 direction: TextDirection.rtl,
-                                text: (snapshot.data?.name != null) ? "${snapshot.data?.name}" : "لا يوجد",
+                                text: (snapshot.data.data?.name != null) ? "${snapshot.data.data?.name}" : "لا يوجد",
                                 color: black,
                                 size: 31,
                                 weight: FontWeight.w500),
                             subtitle: CustomText(
                                 direction: TextDirection.rtl,
-                                text: snapshot.data?.phone ?? "لا يوجد",
+                                text: snapshot.data.data?.phone ?? "لا يوجد",
                                 color: black,
                                 size: 24,
                                 weight: FontWeight.w500),

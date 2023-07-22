@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../model/userModel.dart';
 import 'package:http/http.dart' as http;
 
 class UserController{
 
-  Future<User> fetchUserData(String? authToken) async {
+  Future<User> fetchUserData() async {
     var url = Uri.parse('http://healthtracker.frmawy.com/api/user/profile');
-    print("$authToken");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? authToken = prefs.getString('auth_token');
     var response = await http.get(
       url,
       headers: {
@@ -17,7 +20,7 @@ class UserController{
     );
 
     if (response.statusCode == 200) {
-      print(response.body);
+      print("sssssssssssssss${response.body}");
       var userData = jsonDecode(response.body);
       return User.fromJson(userData);
     } else {
