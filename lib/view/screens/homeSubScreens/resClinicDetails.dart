@@ -65,7 +65,7 @@ class _ResClinicDetailsState extends State<ResClinicDetails> {
                   color: bg),
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-                child: SearchBar(),
+                child: SearchBars(),
               )),
           GestureDetector(
             onTap: (){

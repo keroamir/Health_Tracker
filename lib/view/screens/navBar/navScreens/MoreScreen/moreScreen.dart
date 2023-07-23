@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:HealthTracker/controller/userController.dart';
+import 'package:HealthTracker/view/screens/navBar/navScreens/MoreScreen/Content_sub_pages/profile_pnt/Profile_pnt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,9 +31,6 @@ class _MoreScreenState extends State<MoreScreen> {
     }
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,14 +48,23 @@ class _MoreScreenState extends State<MoreScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SvgPicture.asset("assets/icons/Edit_Icon.svg"),
+                        InkWell(
+                          child: SvgPicture.asset("assets/icons/Edit_Icon.svg"),
+                          onTap: (){
+                            Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context) {
+                              return Profile_Pnt();
+                            }));
+                          },
+                        ),
                         Container(
                           alignment: Alignment.centerRight,
                           width: MediaQuery.of(context).size.width / 2,
                           child: ListTile(
                             title: CustomText(
                                 direction: TextDirection.rtl,
-                                text: (snapshot.data.data?.name != null) ? "${snapshot.data.data?.name}" : "لا يوجد",
+                                text: (snapshot.data.data?.name != null)
+                                    ? "${snapshot.data.data?.name}"
+                                    : "لا يوجد",
                                 color: black,
                                 size: 31,
                                 weight: FontWeight.w500),
@@ -74,23 +81,28 @@ class _MoreScreenState extends State<MoreScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: GestureDetector(
-                        onTap: () async {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          String? authToken = prefs.getString('auth_token');
-                          if (authToken != null) {
-                             final snackBar =
-                                     SnackBar(content: CustomText(text: "انت بالفعل سجلت" , color: white, size: 20, weight: FontWeight.w500,));
-                                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          } else {
-                            Navigator.push(context, CupertinoPageRoute(
-                                builder: (BuildContext context) {
-                              return const LoginPnt();
-                            }));
-                          }
-                        },
+                    child: GestureDetector(
+                      onTap: () async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        String? authToken = prefs.getString('auth_token');
+                        if (authToken != null) {
+                          final snackBar = SnackBar(
+                              content: CustomText(
+                            text: "انت بالفعل سجلت",
+                            color: white,
+                            size: 20,
+                            weight: FontWeight.w500,
+                          ));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          Navigator.push(context, CupertinoPageRoute(
+                              builder: (BuildContext context) {
+                            return const LoginPnt();
+                          }));
+                        }
+                      },
+                      child: Card(
                         child: Padding(
                           padding: const EdgeInsets.only(
                               right: 20, bottom: 10, top: 10),
@@ -321,31 +333,40 @@ class _MoreScreenState extends State<MoreScreen> {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width/1.5,
+                    width: MediaQuery.of(context).size.width / 1.5,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(active),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(active),
                       ),
-                      onPressed: ()  {
+                      onPressed: () {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
                               backgroundColor: bg,
                               elevation: 10,
-                                shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),),
-                              title: Text('هل تريد تسجيل خروج', textDirection: TextDirection.rtl,style: TextStyle(color: black, fontSize: 30),),
-
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              title: Text(
+                                'هل تريد تسجيل خروج',
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(color: black, fontSize: 30),
+                              ),
                               actions: [
                                 TextButton(
-                                  child: Text('نعم',textDirection: TextDirection.rtl, style: TextStyle(color: black, fontSize: 20),),
+                                  child: Text(
+                                    'نعم',
+                                    textDirection: TextDirection.rtl,
+                                    style:
+                                        TextStyle(color: black, fontSize: 20),
+                                  ),
                                   onPressed: () async {
                                     SharedPreferences prefs =
                                         await SharedPreferences.getInstance();
                                     await prefs.remove('auth_token');
                                     exit(0);
-
                                   },
                                 ),
                               ],
@@ -353,7 +374,6 @@ class _MoreScreenState extends State<MoreScreen> {
                           },
                         );
                       },
-
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -380,7 +400,9 @@ class _MoreScreenState extends State<MoreScreen> {
               return Text('Error: ${snapshot.error}');
             } else {
               // Show a loading indicator while waiting for the future to complete
-              return const Center(child: CircularProgressIndicator(),);
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
         ),
